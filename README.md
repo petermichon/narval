@@ -1,5 +1,7 @@
 # Narval
 
+Narval
+
 ## Installation
 
 Clone the repository
