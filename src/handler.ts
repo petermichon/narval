@@ -76,10 +76,21 @@ function favicon16(): Uint8Array<ArrayBuffer> {
   return readFile(path);
 }
 
+let nbRequests = 0;
+
 export function handler(req: Request) {
   const url = new URL(req.url);
 
-  console.log(url.pathname);
+  {
+    if (url.pathname === "/" || url.pathname === "/index.html") {
+      nbRequests += 1;
+      console.log(`Query: ${nbRequests}`);
+    }
+  }
+
+  {
+    // console.log(url.pathname);
+  }
 
   type Route = { type: string; func: () => any };
   const routes: Map<string, Route> = new Map();
