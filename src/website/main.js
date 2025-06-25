@@ -75,7 +75,6 @@ const app = document.getElementById("app");
 
       const imgcontainer = document.createElement("div");
       imgcontainer.className = "rounded-md aspect-video bg-gray-50 relative ";
-      // rounded-t-md
       singleVideo.appendChild(imgcontainer);
 
       const textloading1 = document.createElement("div");
@@ -103,7 +102,7 @@ const app = document.getElementById("app");
             const img = document.createElement("img");
             img.src = thumbnailUrl;
             img.className =
-              "sm:p-2 relative w-full h-full aspect-video object-cover opacity-0 transition-opacity duration-500 z-1";
+              "sm:rounded-md relative w-full h-full aspect-video object-cover opacity-0 transition-opacity duration-500 z-1";
             img.loading = "lazy";
             img.onload = () => {
               img.classList.add("opacity-100");

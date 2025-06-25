@@ -3,7 +3,8 @@
     "install": "deno run --allow-run sh-install.ts",
     "build": "deno run --allow-run sh-build.ts",
     "serve": "deno run --allow-run sh-serve.ts",
-    "dev": "deno run --allow-run --watch sh-serve.ts"
+    "build-dev": "deno run --allow-run --watch sh-build.ts",
+    "serve-dev": "deno run --allow-run --watch sh-serve.ts"
   },
   "lint": {
     "rules": {
