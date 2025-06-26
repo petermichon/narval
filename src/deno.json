@@ -1,10 +1,10 @@
 {
   "tasks": {
-    "install": "deno run --allow-run sh-install.ts",
-    "build": "deno run --allow-run sh-build.ts",
-    "serve": "deno run --allow-run sh-serve.ts",
-    "build-dev": "deno run --allow-run --watch sh-build.ts",
-    "serve-dev": "deno run --allow-run --watch sh-serve.ts"
+    "install": "cd website ; npm install tailwindcss @tailwindcss/cli",
+    "build": "cd website ; npx @tailwindcss/cli -i ./styles.css -o ./tailwind.css",
+    "serve": "deno run --allow-net --allow-read index.ts",
+    "build-dev": "cd website ; npx @tailwindcss/cli -i ./styles.css -o ./tailwind.css --watch",
+    "serve-dev": "deno run --allow-net --allow-read --watch index.ts"
   },
   "lint": {
     "rules": {
