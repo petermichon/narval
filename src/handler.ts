@@ -1,8 +1,13 @@
+import { DefaultMap } from "./default-map/mod.ts";
+
 enum HTTPMethod {
   GET = "GET",
 }
 
 enum MimeType {
+  Text = "text/plain",
+  Binary = "application/octet-stream",
+
   CSS = "text/css",
   HTML = "text/html",
   Icon = "image/x-icon",
@@ -19,124 +24,158 @@ export function handler(req: Request) {
 
   // console.log(url.pathname);
 
-  type Route = {
+  type Handler = (args?: any) => any;
+
+  const routes = new DefaultMap<any, Handler>();
+
+  type Result = {
+    content: any;
     type: string;
-    handler: () => any;
+    status: number;
   };
-  const routes: Map<string, Route> = new Map();
 
-  routes.set("/", {
-    type: MimeType.HTML,
-    handler: (): string => {
-      {
-        // Metrics
-        nbRequests += 1;
-        console.log(`Query: ${nbRequests}`);
-      }
+  {
+    routes.set("/", (): Result => {
+      // Metrics
+      nbRequests += 1;
+      console.log(`Query: ${nbRequests}`);
+
       const path = "./website/index.html";
-      const file = Deno.readTextFileSync(path);
-      return file;
-    },
-  });
+      const result = {
+        type: MimeType.HTML,
+        content: Deno.readFileSync(path),
+        status: 200,
+      };
+      return result;
+    });
 
-  routes.set("/tailwind.css", {
-    type: MimeType.CSS,
-    handler: (): string => {
+    routes.set("/tailwind.css", (): Result => {
       const path = "./website/tailwind.css";
-      return Deno.readTextFileSync(path);
-    },
-  });
+      const result = {
+        type: MimeType.CSS,
+        content: Deno.readFileSync(path),
+        status: 200,
+      };
+      return result;
+    });
 
-  routes.set("/main.js", {
-    type: MimeType.JavaScript,
-    handler: (): string => {
+    routes.set("/main.js", (): Result => {
       const path = "./website/main.js";
-      return Deno.readTextFileSync(path);
-    },
-  });
+      const result = {
+        type: MimeType.JavaScript,
+        content: Deno.readFileSync(path),
+        status: 200,
+      };
+      return result;
+    });
 
-  routes.set("/site.webmanifest", {
-    type: MimeType.WebManifest,
-    handler: (): string => {
+    routes.set("/site.webmanifest", (): Result => {
       const path = "./website/site.webmanifest";
-      return Deno.readTextFileSync(path);
-    },
-  });
+      const result = {
+        type: MimeType.WebManifest,
+        content: Deno.readFileSync(path),
+        status: 200,
+      };
+      return result;
+    });
 
-  routes.set("/android-chrome-192x192.png", {
-    type: MimeType.PNG,
-    handler: (): Uint8Array<ArrayBuffer> => {
+    routes.set("/android-chrome-192x192.png", (): Result => {
       const path = "./website/media/android-chrome-192x192.png";
-      return Deno.readFileSync(path);
-    },
-  });
+      const result = {
+        type: MimeType.PNG,
+        content: Deno.readFileSync(path),
+        status: 200,
+      };
+      return result;
+    });
 
-  routes.set("/android-chrome-512x512.png", {
-    type: MimeType.PNG,
-    handler: (): Uint8Array<ArrayBuffer> => {
-      const path = "./website/media/android-chrome-512x512.png";
-      return Deno.readFileSync(path);
-    },
-  });
+    // routes.set("/android-chrome-512x512.png", (): Result => {
+    //   const path = "./website/media/android-chrome-512x512.png";
+    //   const result = {
+    //     type: MimeType.PNG,
+    //     content: Deno.readFileSync(path),
+    //     status: 200,
+    //   };
+    //   return result;
+    // });
 
-  routes.set("/screenshot-wide.png", {
-    type: MimeType.PNG,
-    handler: (): Uint8Array<ArrayBuffer> => {
+    routes.set("/screenshot-wide.png", (): Result => {
       const path = "./website/media/screenshot-wide.png";
-      return Deno.readFileSync(path);
-    },
-  });
+      const result = {
+        type: MimeType.PNG,
+        content: Deno.readFileSync(path),
+        status: 200,
+      };
+      return result;
+    });
 
-  routes.set("/screenshot-narrow.png", {
-    type: MimeType.PNG,
-    handler: (): Uint8Array<ArrayBuffer> => {
+    routes.set("/screenshot-narrow.png", (): Result => {
       const path = "./website/media/screenshot-narrow.png";
-      return Deno.readFileSync(path);
-    },
-  });
+      const result = {
+        type: MimeType.PNG,
+        content: Deno.readFileSync(path),
+        status: 200,
+      };
+      return result;
+    });
 
-  routes.set("/favicon.ico", {
-    type: MimeType.Icon,
-    handler: (): Uint8Array<ArrayBuffer> => {
-      const path = "./website/media/favicon.ico";
-      return Deno.readFileSync(path);
-    },
-  });
+    // routes.set("/favicon.ico", (): Result => {
+    //   const path = "./website/media/favicon.ico";
+    //   const result = {
+    //     type: MimeType.Icon,
+    //     content: Deno.readFileSync(path),
+    //     status: 200,
+    //   };
+    //   return result;
+    // });
 
-  routes.set("/narval.png", {
-    type: MimeType.PNG,
-    handler: (): Uint8Array<ArrayBuffer> => {
+    routes.set("/narval.png", (): Result => {
       const path = "./website/media/narval.png";
-      return Deno.readFileSync(path);
-    },
-  });
+      const result = {
+        type: MimeType.PNG,
+        content: Deno.readFileSync(path),
+        status: 200,
+      };
+      return result;
+    });
 
-  routes.set("/favicon-32x32.png", {
-    type: MimeType.PNG,
-    handler: (): Uint8Array<ArrayBuffer> => {
+    routes.set("/favicon-32x32.png", (): Result => {
       const path = "./website/media/favicon-32x32.png";
-      return Deno.readFileSync(path);
-    },
-  });
+      const result = {
+        type: MimeType.PNG,
+        content: Deno.readFileSync(path),
+        status: 200,
+      };
+      return result;
+    });
 
-  routes.set("/favicon-32x32.png", {
-    type: MimeType.PNG,
-    handler: (): Uint8Array<ArrayBuffer> => {
-      const path = "./website/media/favicon-16x16.png";
-      return Deno.readFileSync(path);
-    },
-  });
+    routes.set("/favicon-32x32.png", (): Result => {
+      const path = "./website/media/favicon-32x32.png";
+      const result = {
+        type: MimeType.PNG,
+        content: Deno.readFileSync(path),
+        status: 200,
+      };
+      return result;
+    });
 
-  if (!routes.has(url.pathname)) {
-    return new Response("Not Found", { status: 404 });
+    routes.default((): Result => {
+      const result = {
+        type: MimeType.Text,
+        content: "Not Found",
+        status: 404,
+      };
+      return result;
+    });
   }
 
-  const route = routes.get(url.pathname) as Route;
+  const handler = routes.get(url.pathname) as Handler;
+  const result = handler();
 
-  const result = route.handler();
-
-  const response = new Response(result, {
-    headers: { "Content-Type": route.type },
+  const response = new Response(result.content, {
+    headers: {
+      "Content-Type": result.type,
+    },
   });
 
   return response;
