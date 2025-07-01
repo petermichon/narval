@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "install": "cd website ; npm install tailwindcss @tailwindcss/cli",
+    "install": "cd website ; npm ci",
     "build": "cd website ; npx @tailwindcss/cli -i ./styles.css -o ./tailwind.css",
     "serve": "deno run --allow-net --allow-read index.ts",
     "dev-build": "cd website ; npx @tailwindcss/cli -i ./styles.css -o ./tailwind.css --watch",
