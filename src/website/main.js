@@ -17,6 +17,7 @@ const app = document.getElementById("app");
     div2.className =
       "text-3xl text-black font-bold pr-3 font-sans hidden lg:block";
     div2.textContent = "narval";
+    div2.style = "font-family: 'Roboto', sans-serif";
     div.appendChild(div2);
   }
 }
@@ -124,6 +125,7 @@ const app = document.getElementById("app");
             p.textContent = data.title;
             p.className =
               "relative text-sm text-black line-clamp-2 items-center align-center m-2 z-1";
+            p.style = "font-family: 'Roboto', sans-serif";
             // singleVideo.appendChild(p);
             textloading1.replaceWith(p);
           }
@@ -133,6 +135,7 @@ const app = document.getElementById("app");
             p.textContent = data.author_name;
             p.className =
               "relative bottom-0 text-xs m-2 text-gray-500 line-clamp-2 z-1";
+            p.style = "font-family: 'Roboto', sans-serif";
             p.style.cursor = "pointer";
             // singleVideo.appendChild(p);
             authorloading.replaceWith(p);
