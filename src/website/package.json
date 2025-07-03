@@ -2,6 +2,7 @@
   "dependencies": {
     "@fontsource-variable/roboto": "^5.2.6",
     "@tailwindcss/cli": "^4.1.11",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.8.3"
   }
 }
