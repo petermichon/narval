@@ -1,4 +1,4 @@
-const app = document.getElementById("app");
+const app = document.getElementById("app")!;
 
 {
   const div = document.createElement("div");

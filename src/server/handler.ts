@@ -1,4 +1,4 @@
-import { DefaultMap } from "./default-map/mod.ts";
+import { DefaultMap } from "../default-map/mod.ts";
 
 type Handler = (args?: any) => any;
 
@@ -58,12 +58,14 @@ export function handler(req: Request) {
 }
 
 function loadRoutes(routes: DefaultMap<any, Handler>) {
+  const websiteFolder = "../website";
+
   routes.set("/index.html", (): Result => {
     // Metrics
     nbRequests += 1;
     console.log(`Query: ${nbRequests}`);
 
-    const path = "./website/index.html";
+    const path = websiteFolder + "/index.html";
     const result = {
       type: MimeType.HTML,
       content: Deno.readFileSync(path),
@@ -75,7 +77,7 @@ function loadRoutes(routes: DefaultMap<any, Handler>) {
   routes.set("/", routes.get("/index.html") as Handler);
 
   routes.set("/tailwind.css", (): Result => {
-    const path = "./website/tailwind.css";
+    const path = websiteFolder + "/tailwind.css";
     const result = {
       type: MimeType.CSS,
       content: Deno.readFileSync(path),
@@ -85,7 +87,7 @@ function loadRoutes(routes: DefaultMap<any, Handler>) {
   });
 
   routes.set("/main.js", (): Result => {
-    const path = "./website/main.js";
+    const path = websiteFolder + "/main.js";
     const result = {
       type: MimeType.JavaScript,
       content: Deno.readFileSync(path),
@@ -95,7 +97,7 @@ function loadRoutes(routes: DefaultMap<any, Handler>) {
   });
 
   routes.set("/site.webmanifest", (): Result => {
-    const path = "./website/site.webmanifest";
+    const path = websiteFolder + "/site.webmanifest";
     const result = {
       type: MimeType.WebManifest,
       content: Deno.readFileSync(path),
@@ -105,7 +107,7 @@ function loadRoutes(routes: DefaultMap<any, Handler>) {
   });
 
   routes.set("/android-chrome-192x192.png", (): Result => {
-    const path = "./website/media/android-chrome-192x192.png";
+    const path = websiteFolder + "/media/android-chrome-192x192.png";
     const result = {
       type: MimeType.PNG,
       content: Deno.readFileSync(path),
@@ -115,7 +117,7 @@ function loadRoutes(routes: DefaultMap<any, Handler>) {
   });
 
   // routes.set("/android-chrome-512x512.png", (): Result => {
-  //   const path = "./website/media/android-chrome-512x512.png";
+  //   const path = websiteFolder + "media/android-chrome-512x512.png";
   //   const result = {
   //     type: MimeType.PNG,
   //     content: Deno.readFileSync(path),
@@ -125,7 +127,7 @@ function loadRoutes(routes: DefaultMap<any, Handler>) {
   // });
 
   routes.set("/screenshot-wide.png", (): Result => {
-    const path = "./website/media/screenshot-wide.png";
+    const path = websiteFolder + "/media/screenshot-wide.png";
     const result = {
       type: MimeType.PNG,
       content: Deno.readFileSync(path),
@@ -135,7 +137,7 @@ function loadRoutes(routes: DefaultMap<any, Handler>) {
   });
 
   routes.set("/screenshot-narrow.png", (): Result => {
-    const path = "./website/media/screenshot-narrow.png";
+    const path = websiteFolder + "/media/screenshot-narrow.png";
     const result = {
       type: MimeType.PNG,
       content: Deno.readFileSync(path),
@@ -145,7 +147,7 @@ function loadRoutes(routes: DefaultMap<any, Handler>) {
   });
 
   // routes.set("/favicon.ico", (): Result => {
-  //   const path = "./website/media/favicon.ico";
+  //   const path = "websiteFolder" + "media/favicon.ico";
   //   const result = {
   //     type: MimeType.Icon,
   //     content: Deno.readFileSync(path),
@@ -155,7 +157,7 @@ function loadRoutes(routes: DefaultMap<any, Handler>) {
   // });
 
   routes.set("/narval.png", (): Result => {
-    const path = "./website/media/narval.png";
+    const path = websiteFolder + "/media/narval.png";
     const result = {
       type: MimeType.PNG,
       content: Deno.readFileSync(path),
@@ -165,7 +167,7 @@ function loadRoutes(routes: DefaultMap<any, Handler>) {
   });
 
   routes.set("/favicon-32x32.png", (): Result => {
-    const path = "./website/media/favicon-32x32.png";
+    const path = websiteFolder + "/media/favicon-32x32.png";
     const result = {
       type: MimeType.PNG,
       content: Deno.readFileSync(path),
@@ -175,7 +177,7 @@ function loadRoutes(routes: DefaultMap<any, Handler>) {
   });
 
   routes.set("/favicon-32x32.png", (): Result => {
-    const path = "./website/media/favicon-32x32.png";
+    const path = websiteFolder + "/media/favicon-32x32.png";
     const result = {
       type: MimeType.PNG,
       content: Deno.readFileSync(path),

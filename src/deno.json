@@ -2,15 +2,9 @@
   "tasks": {
     "install": "cd website ; npm ci",
     "build": "cd website ; npx @tailwindcss/cli -i ./styles.css -o ./tailwind.css ; npx tsc main.ts",
-    "serve": "deno run --allow-net --allow-read index.ts",
+    "serve": "cd server ; deno run --allow-net --allow-read index.ts",
     "dev-tailwind": "cd website ; npx @tailwindcss/cli -i ./styles.css -o ./tailwind.css --watch",
     "dev-typescript": "cd website ; npx tsc main.ts --watch",
-    "dev": "deno run --allow-net --allow-read --watch index.ts"
-  },
-  "lint": {
-    "rules": {
-      "include": [],
-      "exclude": ["no-unused-vars", "no-empty", "no-explicit-any"]
-    }
+    "dev": "cd server ; deno run --allow-net --allow-read --watch index.ts"
   }
 }
