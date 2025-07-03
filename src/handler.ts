@@ -35,9 +35,8 @@ let nbRequests = 0;
 export function handler(req: Request) {
   const url = new URL(req.url);
 
-  // get method
-  const method = req.method as HTTPMethod;
-  console.log(method);
+  const method = req.method;
+  // console.log(method);
 
   // console.log(url.pathname);
 
