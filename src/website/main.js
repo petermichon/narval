@@ -141,38 +141,51 @@ const app = document.getElementById("app");
             authorloading.replaceWith(p);
           }
 
-          // singleVideo.style.cursor = "pointer";
-          singleVideo.addEventListener("click", () => {});
+          singleVideo.style.cursor = "pointer";
+
+          {
+            const videoPlayer = document.createElement("div");
+            // videoPlayer.className = "hidden";
+            // videoFeed.appendChild(videoPlayer);
+
+            {
+              const url = `https://www.youtube.com/embed/${video.id}`;
+              const iframe = document.createElement("iframe");
+              iframe.style.margin = "0px";
+              iframe.style.padding = "0px";
+              iframe.width = "560";
+              iframe.height = "315";
+              iframe.src = url;
+              iframe.frameBorder = "0";
+              iframe.allowFullscreen = true;
+              iframe.referrerPolicy = "strict-origin-when-cross-origin";
+              iframe.className = "";
+              videoPlayer.appendChild(iframe);
+            }
+
+            {
+              const p = document.createElement("p");
+              p.textContent = data.title;
+              p.className = "text-xl font-bold text-black line-clamp-2";
+              p.style = "font-family: 'Roboto', sans-serif";
+              videoPlayer.appendChild(p);
+            }
+
+            {
+              const p = document.createElement("p");
+              p.textContent = data.author_name;
+              p.className = "text-l font-bold text-black line-clamp-2";
+              p.style = "font-family: 'Roboto', sans-serif";
+              p.style.cursor = "pointer";
+              videoPlayer.appendChild(p);
+            }
+
+            singleVideo.addEventListener("click", () => {
+              videoFeed.replaceWith(videoPlayer);
+              window.location.hash = video.id;
+            });
+          }
         });
-
-      const url = `https://www.youtube.com/embed/${video.id}`;
-      const iframe = document.createElement("iframe");
-      iframe.style.margin = "0px";
-      iframe.style.padding = "0px";
-      iframe.width = "560";
-      iframe.height = "315";
-      iframe.src = url;
-      iframe.frameBorder = "0";
-      iframe.allowFullscreen = true;
-      iframe.referrerPolicy = "strict-origin-when-cross-origin";
-      iframe.className = "";
-
-      // {
-      //   const p = document.createElement("p");
-      //   p.textContent = data.title;
-      //   p.className = "text-xl font-bold text-black line-clamp-2";
-      //   singleVideo.appendChild(p);
-      // }
-
-      // {
-      //   const p = document.createElement("p");
-      //   p.textContent = data.author_name;
-      //   p.className = "text-l font-bold text-black line-clamp-2";
-      //   p.style.cursor = "pointer";
-      //   singleVideo.appendChild(p);
-      // }
-
-      // container.appendChild(iframe);
     });
   }
 
