@@ -1,4 +1,8 @@
 {
+  "tasks": {
+    "serve": "cd server ; deno run --allow-net --allow-read index.ts",
+    "dev": "cd server ; deno run --allow-net --allow-read --watch index.ts"
+  },
   "lint": {
     "rules": {
       "include": [],

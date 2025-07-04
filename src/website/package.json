@@ -4,5 +4,11 @@
     "@tailwindcss/cli": "^4.1.11",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.8.3"
+  },
+  "scripts": {
+    "install": "ci",
+    "build": "npx @tailwindcss/cli -i ./styles.css -o ./tailwind.css ; npx tsc main.ts",
+    "dev-tailwind": "npx @tailwindcss/cli -i ./styles.css -o ./tailwind.css --watch",
+    "dev-typescript": "npx tsc main.ts --watch"
   }
 }
