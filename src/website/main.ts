@@ -20,6 +20,12 @@ const app = document.getElementById('app')!
     div2.style = "font-family: 'Roboto', sans-serif"
     div.appendChild(div2)
   }
+  {
+    // const test = {
+    //   className: 'text-3xl text-black font-bold pr-3 font-sans block lg:hidden',
+    //   textContent: 'narval',
+    // } as HTMLDivElement
+  }
 }
 
 {
@@ -29,7 +35,12 @@ const app = document.getElementById('app')!
   app.appendChild(videoFeed)
 
   {
-    const videos = [
+    type Video = {
+      id: string
+      time: string
+    }
+
+    const videos: Array<Video> = [
       { id: 'GX17waseMtU', time: '4701' },
       { id: 'wSa-sjaLVOM', time: '3507' },
       { id: 'sjNx8ir-z9w', time: '900s' },
@@ -62,13 +73,14 @@ const app = document.getElementById('app')!
       // { id: '2u19fmGsu5M' },
       // { id: '5L7M55xOLp8' },
 
-      { id: 'AjWfY7SnMBI' },
-      { id: 'QggJzZdIYPI' },
-      { id: '4zUUCTwOb0w' },
-      { id: '9sCuyYOo3tQ' },
+      { id: 'AjWfY7SnMBI', time: '0' },
+      { id: 'QggJzZdIYPI', time: '0' },
+      { id: '4zUUCTwOb0w', time: '0' },
+      { id: '9sCuyYOo3tQ', time: '0' },
     ]
 
-    videos.forEach((video) => {
+    // videos.forEach((video: Video) => {
+    for (const video of videos) {
       const oembedUrl = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${video.id}&format=json`
       const thumbnailUrl = `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`
       // const thumbnailUrl = ``;
@@ -111,10 +123,10 @@ const app = document.getElementById('app')!
       }
 
       fetch(oembedUrl)
-        .then((res) => {
+        .then((res: Response) => {
           return res.json()
         })
-        .then((data) => {
+        .then((data: any) => {
           {
             const img = document.createElement('img')
             img.src = thumbnailUrl
@@ -161,7 +173,7 @@ const app = document.getElementById('app')!
 
           {
             const videoPlayer = document.createElement('div')
-            // videoPlayer.className = "hidden";
+            videoPlayer.className = ''
             // videoFeed.appendChild(videoPlayer);
 
             {
@@ -170,13 +182,13 @@ const app = document.getElementById('app')!
               const iframe = document.createElement('iframe')
               iframe.style.margin = '0px'
               iframe.style.padding = '0px'
-              iframe.width = '560'
-              iframe.height = '315'
+              // iframe.width = '560'
+              // iframe.height = '315'
               iframe.src = url
               // iframe.frameBorder = '0'
               iframe.allowFullscreen = true
               iframe.referrerPolicy = 'strict-origin-when-cross-origin'
-              iframe.className = ''
+              iframe.className = 'w-full aspect-video'
               videoPlayer.appendChild(iframe)
             }
 
@@ -203,7 +215,7 @@ const app = document.getElementById('app')!
               history.pushState({ page: 1 }, 'Title 1', `#${video.id}`)
 
               // Later, when user clicks back, 'popstate' event fires
-              window.addEventListener('popstate', (event) => {
+              globalThis.addEventListener('popstate', (event) => {
                 if (!event.state) {
                   console.log('No state object — probably the initial page')
                 }
@@ -214,7 +226,7 @@ const app = document.getElementById('app')!
             })
           }
         })
-    })
+    }
   }
 
   {
