@@ -30,26 +30,42 @@ const app = document.getElementById('app')!
 
   {
     const videos = [
-      { id: '4FoylWoF1ns' },
-      { id: 'bY0tH3-kmG0' },
-      { id: 'ig-_3_-9wu4' },
-      { id: 'ZMS_X-wdTi4' },
-      { id: 'AV8IxzS7xU8' },
-      { id: 'wrFsapf0Enk' },
-      { id: '6VgKYd0JWq4' },
-      { id: 'S1dN1NY36cY' },
-      { id: 'ZCM-eMOJXiU' },
-      { id: 'FAd8SD3W3zg' },
-      { id: 'FLw4vYrKO4M' },
-      { id: '-DjSU7vBZoY' },
-      { id: 'E99ffL9wwEQ' },
-      { id: '-lJ9En6E9Z8' },
-      { id: 'ZRJo0yJWdfY' },
-      { id: 'LGULuWU6NXg' },
-      { id: '2u19fmGsu5M' },
-      { id: '5L7M55xOLp8' },
+      { id: 'GX17waseMtU', time: '4701' },
+      { id: 'wSa-sjaLVOM', time: '3507' },
+      { id: 'sjNx8ir-z9w', time: '900s' },
+      { id: 'wrFsapf0Enk', time: '4280' },
+      { id: 'Qe5WT22-AO8', time: '0' },
+      { id: '2lZHygbJzZU', time: '0' },
+      { id: 'xuHVTYekC9M', time: '0' },
+      { id: 'rW_EoVHFMEc', time: '0' },
+      { id: 'tYEflPGA1YM', time: '0' },
+      { id: 'dxCQUgYEiM4', time: '0' },
+      { id: 'ssSRJ5cXn20', time: '0' },
+      { id: 'yd4KskruaPM', time: '0' },
+
+      // { id: '4FoylWoF1ns' },
+      // { id: 'bY0tH3-kmG0' },
+      // { id: 'ig-_3_-9wu4' },
+      // { id: 'ZMS_X-wdTi4' },
+      // { id: 'AV8IxzS7xU8' },
+      // { id: 'wrFsapf0Enk' },
+      // { id: '6VgKYd0JWq4' },
+      // { id: 'S1dN1NY36cY' },
+      // { id: 'ZCM-eMOJXiU' },
+      // { id: 'FAd8SD3W3zg' },
+      // { id: 'FLw4vYrKO4M' },
+      // { id: '-DjSU7vBZoY' },
+      // { id: 'E99ffL9wwEQ' },
+      // { id: '-lJ9En6E9Z8' },
+      // { id: 'ZRJo0yJWdfY' },
+      // { id: 'LGULuWU6NXg' },
+      // { id: '2u19fmGsu5M' },
+      // { id: '5L7M55xOLp8' },
 
       { id: 'AjWfY7SnMBI' },
+      { id: 'QggJzZdIYPI' },
+      { id: '4zUUCTwOb0w' },
+      { id: '9sCuyYOo3tQ' },
     ]
 
     videos.forEach((video) => {
@@ -149,7 +165,8 @@ const app = document.getElementById('app')!
             // videoFeed.appendChild(videoPlayer);
 
             {
-              const url = `https://www.youtube.com/embed/${video.id}`
+              const url = `https://www.youtube.com/embed/${video.id}?start=${video.time}`
+              // ?start=90&autoplay=1&controls=0&mute=1&loop=1&playlist=${video.id}
               const iframe = document.createElement('iframe')
               iframe.style.margin = '0px'
               iframe.style.padding = '0px'
