@@ -75,6 +75,8 @@ function loadRoutes(routes: DefaultMap<any, Handler>) {
   });
 
   routes.set("/", routes.get("/index.html") as Handler);
+  routes.set("/feed", routes.get("/index.html") as Handler);
+  routes.set("/video", routes.get("/index.html") as Handler);
 
   routes.set("/tailwind.css", (): Result => {
     const path = websiteFolder + "/tailwind.css";
@@ -88,6 +90,26 @@ function loadRoutes(routes: DefaultMap<any, Handler>) {
 
   routes.set("/main.js", (): Result => {
     const path = websiteFolder + "/main.js";
+    const result = {
+      type: MimeType.JavaScript,
+      content: Deno.readFileSync(path),
+      status: Status.OK,
+    };
+    return result;
+  });
+
+  routes.set("/video.js", (): Result => {
+    const path = websiteFolder + "/video.js";
+    const result = {
+      type: MimeType.JavaScript,
+      content: Deno.readFileSync(path),
+      status: Status.OK,
+    };
+    return result;
+  });
+
+  routes.set("/feed.js", (): Result => {
+    const path = websiteFolder + "/feed.js";
     const result = {
       type: MimeType.JavaScript,
       content: Deno.readFileSync(path),

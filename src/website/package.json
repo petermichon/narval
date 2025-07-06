@@ -7,8 +7,8 @@
   },
   "scripts": {
     "install": "ci",
-    "build": "npx @tailwindcss/cli -i ./styles.css -o ./tailwind.css ; npx tsc main.ts",
+    "build": "npx @tailwindcss/cli -i ./styles.css -o ./tailwind.css ; npx tsc",
     "dev-tailwind": "npx @tailwindcss/cli -i ./styles.css -o ./tailwind.css --watch",
-    "dev-typescript": "npx tsc main.ts --watch"
+    "dev-typescript": "npx tsc --watch"
   }
 }
