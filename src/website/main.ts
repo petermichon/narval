@@ -6,7 +6,7 @@ import { newFeedElement } from './feed.ts'
 import { newVideoElement } from './video.ts'
 
 const videos = [
-  { id: 'BsbvE2FLfxM', time: '3282' },
+  { id: 'OvL42CcOt-4', time: '0' },
   { id: 'h9QHarUTy9w', time: '2599' },
   { id: 'wSa-sjaLVOM', time: '3507' },
   { id: 'wrFsapf0Enk', time: '4280' },

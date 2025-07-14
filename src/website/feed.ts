@@ -12,12 +12,8 @@ export function newFeedElement(videos: { id: string; time: string }[]) {
       const logo = document.createElement('div')
       logo.className = 'flex cursor-pointer'
       logo.onclick = () => {
-        console.log(globalThis.location.href)
-
-        if (globalThis.location.pathname == '/') {
-          return
-        }
-        globalThis.location.href = '/'
+        // console.log(globalThis.location.href)
+        return
       }
       div.appendChild(logo)
       {
