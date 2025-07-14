@@ -1,14 +1,14 @@
 {
-  "dependencies": {
-    "@fontsource-variable/roboto": "^5.2.6",
-    "@tailwindcss/cli": "^4.1.11",
-    "tailwindcss": "^4.1.11",
-    "typescript": "^5.8.3"
-  },
+  "type": "module",
   "scripts": {
-    "install": "ci",
-    "build": "npx @tailwindcss/cli -i ./styles.css -o ./tailwind.css ; npx tsc",
+    "dev": "npx vite",
+    "build": "npx vite build",
     "dev-tailwind": "npx @tailwindcss/cli -i ./styles.css -o ./tailwind.css --watch",
     "dev-typescript": "npx tsc --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "tailwindcss": "^4.1.11",
+    "vite": "^7.0.4"
   }
 }

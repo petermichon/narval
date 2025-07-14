@@ -1,11 +1,1 @@
-@import "tailwindcss";
-
-/* @font-face {
-  font-family: "Roboto";
-  src: url("./fonts/roboto-latin-400-regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-} */
-
-/* @import "@fontsource/roboto/400.css"; */
-/* @import "@fontsource/roboto/700.css"; */
+@import 'tailwindcss';

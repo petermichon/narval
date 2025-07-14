@@ -118,6 +118,26 @@ function loadRoutes(routes: DefaultMap<any, Handler>) {
     return result;
   });
 
+  routes.set("/feed.html", (): Result => {
+    const path = websiteFolder + "/feed.html";
+    const result = {
+      type: MimeType.HTML,
+      content: Deno.readFileSync(path),
+      status: Status.OK,
+    };
+    return result;
+  });
+
+  routes.set("/video.html", (): Result => {
+    const path = websiteFolder + "/video.html";
+    const result = {
+      type: MimeType.HTML,
+      content: Deno.readFileSync(path),
+      status: Status.OK,
+    };
+    return result;
+  });
+
   routes.set("/site.webmanifest", (): Result => {
     const path = websiteFolder + "/site.webmanifest";
     const result = {
