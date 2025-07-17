@@ -5,6 +5,6 @@
     "lib": ["dom", "esnext"],
     "moduleResolution": "Node"
   },
-  "include": ["src"],
-  "files": ["main.ts", "feed.ts", "video.ts"]
+  "include": ["**/*"],
+  "exclude": ["node_modules", "dist"]
 }
