@@ -1,16 +1,22 @@
 // @ts-check: <>
 
-export {}
-
 import { newFeedElement } from './feed.ts'
 import { newVideoElement } from './video.ts'
+import { newChannelElement } from './channel.ts'
+import { newLibraryElement } from './library.ts'
 
 let videos: { id: string; time: string }[] = []
 
 const pathname = globalThis.location.pathname
 // console.log(pathname)
 
-goToPage(pathname)
+function main() {
+  goToPage(pathname)
+
+  globalThis.addEventListener('popstate', (event) => {
+    goToPage(globalThis.location.pathname)
+  })
+}
 
 function goToPage(pathname: string) {
   const app = document.getElementById('app')
@@ -28,6 +34,7 @@ function goToPage(pathname: string) {
         // console.log(videos)
 
         document.title = 'Narval'
+
         const feedElement = newFeedElement(videos)
 
         feedElement.addEventListener('video-click', (event) => {
@@ -48,9 +55,9 @@ function goToPage(pathname: string) {
   }
 
   if (pathname === '/video') {
-    const urlparameters = new URLSearchParams(globalThis.location.search)
-
     document.title = 'Narval - Video'
+
+    const urlparameters = new URLSearchParams(globalThis.location.search)
 
     const id = urlparameters.get('v') || ''
     const time = urlparameters.get('t') || '0'
@@ -65,8 +72,30 @@ function goToPage(pathname: string) {
     app.innerHTML = ''
     app.appendChild(videoElement)
   }
+
+  if (pathname === '/channel') {
+    document.title = 'Narval - Channel'
+
+    const urlparameters = new URLSearchParams(globalThis.location.search)
+
+    const id = urlparameters.get('c') || ''
+
+    const channelElement = newChannelElement(id)
+
+    // channelElement.addEventListener('logo-click', (event) => {
+    //   history.pushState({}, '', `/`)
+    //   goToPage('/')
+    // })
+
+    app.innerHTML = ''
+    app.appendChild(channelElement)
+  }
+
+  if (pathname === '/library') {
+    document.title = 'Narval - Library'
+    app.innerHTML = ''
+    app.appendChild(newLibraryElement())
+  }
 }
 
-globalThis.addEventListener('popstate', (event) => {
-  goToPage(globalThis.location.pathname)
-})
+export { main }
