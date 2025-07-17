@@ -113,7 +113,7 @@ export function newFeedElement(videos: { id: string; time: string }[]) {
               const p = document.createElement('p')
               p.textContent = data.title
               p.className =
-                'relative text-sm text-black line-clamp-2 items-center align-center m-2 z-1'
+                'relative text-sm text-black line-clamp-2 items-center align-center m-2 z-1 min-h-[3rem] leading-[1.5rem]'
               p.style = "font-family: 'Roboto', sans-serif"
               // singleVideo.appendChild(p);
               textloading1.replaceWith(p)
@@ -132,52 +132,13 @@ export function newFeedElement(videos: { id: string; time: string }[]) {
 
             singleVideo.style.cursor = 'pointer'
 
-            {
-              const videoPlayer = document.createElement('div')
-              videoPlayer.className = ''
-              // videoFeed.appendChild(videoPlayer);
-
-              {
-                const url = `https://www.youtube.com/embed/${video.id}?start=${video.time}`
-                // ?start=90&autoplay=1&controls=0&mute=1&loop=1&playlist=${video.id}
-                const iframe = document.createElement('iframe')
-                iframe.style.margin = '0px'
-                iframe.style.padding = '0px'
-                // iframe.width = '560'
-                // iframe.height = '315'
-                iframe.src = url
-                // iframe.frameBorder = '0'
-                iframe.allowFullscreen = true
-                iframe.referrerPolicy = 'strict-origin-when-cross-origin'
-                iframe.className = 'w-full aspect-video'
-                videoPlayer.appendChild(iframe)
-              }
-
-              {
-                const p = document.createElement('p')
-                p.textContent = data.title
-                p.className = 'text-xl font-bold text-black line-clamp-2'
-                p.style = "font-family: 'Roboto', sans-serif"
-                videoPlayer.appendChild(p)
-              }
-
-              {
-                const p = document.createElement('p')
-                p.textContent = data.author_name
-                p.className = 'text-l font-bold text-black line-clamp-2'
-                p.style = "font-family: 'Roboto', sans-serif"
-                p.style.cursor = 'pointer'
-                videoPlayer.appendChild(p)
-              }
-
-              singleVideo.addEventListener('click', () => {
-                const event = new CustomEvent('video-click', {
-                  detail: { video: video },
-                })
-
-                feedElem.dispatchEvent(event)
+            singleVideo.addEventListener('click', () => {
+              const event = new CustomEvent('video-click', {
+                detail: { video: video },
               })
-            }
+
+              feedElem.dispatchEvent(event)
+            })
           })
       }
     }
