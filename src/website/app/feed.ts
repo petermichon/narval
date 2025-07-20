@@ -6,7 +6,7 @@ function newFeedElement(videos: { id: string; time: string }[]) {
   {
     const videoFeed = document.createElement('div')
     videoFeed.className =
-      'sm:m-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-0 sm:gap-3 bg-white'
+      'sm:p-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-0 sm:gap-3 bg-white text-black dark:bg-neutral-900 dark:text-white'
     feedElem.appendChild(videoFeed)
 
     {
@@ -21,105 +21,19 @@ function newFeedElement(videos: { id: string; time: string }[]) {
           })
           feedElem.dispatchEvent(eventCopy)
         })
-
-        //   const oembedUrl = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${video.id}&format=json`
-        //   const thumbnailUrl = `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`
-        //   // const thumbnailUrl = ``;
-        //   // mqdefault.jpg
-        //   // hqdefault.jpg
-        //   // sddefault.jpg
-        //   // maxresdefault.jpg
-        //   // https://i.ytimg.com/vi_webp/6VgKYd0JWq4/maxresdefault.webp
-        //   const singleVideo = document.createElement('div')
-        //   singleVideo.className =
-        //     'relative overflow-hidden bg-white p-0 hover:scale-100 transition-all duration-180 md:rounded-lg'
-        //   videoFeed.appendChild(singleVideo)
-        //   // {
-        //   //   const img = document.createElement("div");
-        //   //   img.className = "rounded-xl w-full aspect-video bg-gray-300";
-        //   //   // img.className = "cursor-pointer rounded-3xl object-cover aspect-[16/9]";
-        //   //   singleVideo.appendChild(img);
-        //   // }
-        //   const imgcontainer = document.createElement('div')
-        //   imgcontainer.className = 'rounded-md aspect-video bg-gray-50 relative'
-        //   singleVideo.appendChild(imgcontainer)
-        //   const textloading1 = document.createElement('div')
-        //   textloading1.className =
-        //     'h-7 m-3 bg-gray-200 rounded-lg animate-pulse z-10'
-        //   singleVideo.appendChild(textloading1)
-        //   const authorloading = document.createElement('div')
-        //   authorloading.className =
-        //     'h-2 m-2 w-1/4 bg-gray-200 rounded-full animate-pulse'
-        //   singleVideo.appendChild(authorloading)
-        //   {
-        //     const separator = document.createElement('div')
-        //     separator.className = 'h-1 bg-gray-200 sm:hidden'
-        //     singleVideo.appendChild(separator)
-        //   }
-        //   fetch(oembedUrl)
-        //     .then((res) => {
-        //       return res.json()
-        //     })
-        //     .then((data) => {
-        //       {
-        //         const img = document.createElement('img')
-        //         img.src = thumbnailUrl
-        //         img.className =
-        //           'sm:rounded-md relative w-full h-full aspect-video object-cover opacity-0 transition-opacity duration-500 z-1'
-        //         img.loading = 'lazy'
-        //         img.onload = () => {
-        //           img.classList.add('opacity-100')
-        //         }
-        //         imgcontainer.appendChild(img)
-        //       }
-        //       {
-        //         const img = document.createElement('img')
-        //         img.src = thumbnailUrl
-        //         img.className =
-        //           'absolute inset-0 w-full h-full object-cover z-0 opacity-20 blur-3xl scale-80 saturate-1000 contrast-100 brightness-100'
-        //         img.loading = 'lazy'
-        //         singleVideo.appendChild(img)
-        //       }
-        //       {
-        //         const p = document.createElement('p')
-        //         p.textContent = data.title
-        //         p.className =
-        //           'relative text-sm text-black line-clamp-2 items-center align-center m-2 z-1 min-h-[3rem] leading-[1.5rem]'
-        //         p.style = "font-family: 'Roboto', sans-serif"
-        //         // singleVideo.appendChild(p);
-        //         textloading1.replaceWith(p)
-        //       }
-        //       {
-        //         const p = document.createElement('p')
-        //         p.textContent = data.author_name
-        //         p.className =
-        //           'relative bottom-0 text-xs m-2 text-gray-500 line-clamp-2 z-1'
-        //         p.style = "font-family: 'Roboto', sans-serif"
-        //         p.style.cursor = 'pointer'
-        //         // singleVideo.appendChild(p);
-        //         authorloading.replaceWith(p)
-        //       }
-        //       singleVideo.style.cursor = 'pointer'
-        //       singleVideo.addEventListener('click', () => {
-        //         const event = new CustomEvent('video-click', {
-        //           detail: { video: video },
-        //         })
-        //         feedElem.dispatchEvent(event)
-        //       })
-        //     })
       }
     }
 
     {
       const div = document.createElement('div')
-      div.className = 'h-20'
+      div.className = 'h-20 bg-white dark:bg-neutral-900'
       feedElem.appendChild(div)
     }
 
     {
       const nav = document.createElement('nav')
       nav.className =
-        'absolute w-full p-7 fixed bottom-0 left-0 right-0 bg-gray-100 lg:hidden z-2 opacity-90 backdrop-blur-md'
+        'absolute w-full p-7 fixed bottom-0 left-0 right-0 lg:hidden z-2 opacity-90 backdrop-blur-md bg-gray-100 dark:bg-neutral-900'
       feedElem.appendChild(nav)
     }
   }

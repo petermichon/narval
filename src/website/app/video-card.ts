@@ -10,7 +10,7 @@ function newVideoCardElement(video: { id: string; time: string }): HTMLElement {
 
   const videoElem = document.createElement('div')
   videoElem.className =
-    'relative overflow-hidden bg-white p-0 hover:scale-100 transition-all duration-180 md:rounded-lg'
+    'relative overflow-hidden bg-white p-0 hover:scale-100 transition-all duration-180 md:rounded-lg bg-white text-black dark:bg-neutral-900 dark:text-white'
 
   // {
   //   const img = document.createElement("div");
@@ -20,21 +20,23 @@ function newVideoCardElement(video: { id: string; time: string }): HTMLElement {
   // }
 
   const imgcontainer = document.createElement('div')
-  imgcontainer.className = 'rounded-md aspect-video bg-gray-50 relative'
+  imgcontainer.className =
+    'rounded-md aspect-video relative bg-gray-50 dark:bg-neutral-800'
   videoElem.appendChild(imgcontainer)
 
   const textloading1 = document.createElement('div')
-  textloading1.className = 'h-7 m-3 bg-gray-200 rounded-lg animate-pulse z-10'
+  textloading1.className =
+    'h-7 m-3 rounded-lg animate-pulse z-10 bg-gray-200 dark:bg-neutral-700'
   videoElem.appendChild(textloading1)
 
   const authorloading = document.createElement('div')
   authorloading.className =
-    'h-2 m-2 w-1/4 bg-gray-200 rounded-full animate-pulse'
+    'h-2 m-2 w-1/4 rounded-full animate-pulse bg-gray-200 dark:bg-neutral-700'
   videoElem.appendChild(authorloading)
 
   {
     const separator = document.createElement('div')
-    separator.className = 'h-1 bg-gray-200 sm:hidden'
+    separator.className = 'h-1 sm:hidden bg-gray-200 dark:bg-neutral-700'
     videoElem.appendChild(separator)
   }
 
@@ -59,7 +61,7 @@ function newVideoCardElement(video: { id: string; time: string }): HTMLElement {
         const img = document.createElement('img')
         img.src = thumbnailUrl
         img.className =
-          'absolute inset-0 w-full h-full object-cover z-0 opacity-20 blur-3xl scale-80 saturate-1000 contrast-100 brightness-100'
+          'absolute inset-0 w-full h-full object-cover z-0 opacity-20 blur-3xl scale-80 saturate-1000 contrast-100 brightness-100 dark:contrast-20'
         img.loading = 'lazy'
         videoElem.appendChild(img)
       }
@@ -68,7 +70,7 @@ function newVideoCardElement(video: { id: string; time: string }): HTMLElement {
         const p = document.createElement('p')
         p.textContent = data.title
         p.className =
-          'relative text-sm text-black line-clamp-2 items-center align-center m-2 z-1 min-h-[3rem] leading-[1.5rem]'
+          'relative text-sm text-black line-clamp-2 items-center align-center m-2 z-1 min-h-[3rem] leading-[1.5rem] text-black dark:text-white'
         p.style = "font-family: 'Roboto', sans-serif"
         // singleVideo.appendChild(p);
         textloading1.replaceWith(p)
@@ -78,7 +80,7 @@ function newVideoCardElement(video: { id: string; time: string }): HTMLElement {
         const p = document.createElement('p')
         p.textContent = data.author_name
         p.className =
-          'relative bottom-0 text-xs m-2 text-gray-500 line-clamp-2 z-1'
+          'relative bottom-0 text-xs m-2 line-clamp-2 z-1 text-gray-500 dark:text-gray-400'
         p.style = "font-family: 'Roboto', sans-serif"
         p.style.cursor = 'pointer'
         // singleVideo.appendChild(p);

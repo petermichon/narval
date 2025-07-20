@@ -36,13 +36,15 @@ function newVideoElement(video: { id: any; time: any }) {
 
       const pTitle = document.createElement('p')
       pTitle.textContent = vid.title
-      pTitle.className = 'text-xl font-bold text-black line-clamp-2'
+      pTitle.className =
+        'text-xl font-bold line-clamp-2 text-black dark:text-white'
       pTitle.style = "font-family: 'Roboto', sans-serif"
       videoPlayer.appendChild(pTitle)
 
       const pAuthor = document.createElement('p')
       pAuthor.textContent = vid.author_name
-      pAuthor.className = 'text-l font-bold text-black line-clamp-2'
+      pAuthor.className =
+        'text-l font-bold line-clamp-2 text-black dark:text-white'
       pAuthor.style = "font-family: 'Roboto', sans-serif"
       // pAuthor.style.cursor = 'pointer'
       videoPlayer.appendChild(pAuthor)

@@ -1,6 +1,7 @@
 function newTopBar() {
   const topBarElem = document.createElement('div')
-  topBarElem.className = 'bg-white flex p-3'
+  topBarElem.className =
+    'flex p-3 bg-white text-black dark:bg-neutral-900 dark:text-white'
 
   {
     const logo = document.createElement('div')
@@ -17,6 +18,7 @@ function newTopBar() {
       topBarElem.dispatchEvent(event)
     })
     topBarElem.appendChild(logo)
+
     {
       const img = document.createElement('img')
       img.className = 'w-9 h-9 ml-4 mr-1'
@@ -25,8 +27,7 @@ function newTopBar() {
     }
     {
       const div2 = document.createElement('div')
-      div2.className =
-        'text-3xl text-black font-bold pr-3 font-sans hidden lg:block'
+      div2.className = 'text-3xl font-bold pr-3 font-sans hidden lg:block'
       div2.textContent = 'narval'
       div2.style = "font-family: 'Roboto', sans-serif"
       logo.appendChild(div2)
