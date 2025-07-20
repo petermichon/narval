@@ -11,8 +11,14 @@ function newVideoElement(video: { id: any; time: any }) {
     videoElem.appendChild(videoPlayer)
 
     {
-      const embed = newYoutubeEmbed(video)
-      videoPlayer.appendChild(embed)
+      const embedContainer = document.createElement('div')
+      embedContainer.className = 'relative w-full aspect-[2.15/1]'
+      videoPlayer.appendChild(embedContainer)
+
+      {
+        const embed = newYoutubeEmbed(video)
+        embedContainer.appendChild(embed)
+      }
     }
 
     // {
@@ -29,23 +35,20 @@ function newVideoElement(video: { id: any; time: any }) {
     }
 
     {
-      const vid = {
-        title: 'title',
-        author_name: 'author_name',
-      }
-
       const pTitle = document.createElement('p')
-      pTitle.textContent = vid.title
+      pTitle.textContent = ''
       pTitle.className =
-        'text-xl font-bold line-clamp-2 text-black dark:text-white'
-      pTitle.style = "font-family: 'Roboto', sans-serif"
+        'text-xl font-bold line-clamp-2 pt-3 pl-6 text-black dark:text-white text-[19px] tracking-[-0.0px] transform scale-y-100'
+      pTitle.style =
+        "font-family: 'Roboto', sans-serif font-variant-numeric: tabular-nums;"
       videoPlayer.appendChild(pTitle)
 
       const pAuthor = document.createElement('p')
-      pAuthor.textContent = vid.author_name
+      pAuthor.textContent = ''
       pAuthor.className =
-        'text-l font-bold line-clamp-2 text-black dark:text-white'
-      pAuthor.style = "font-family: 'Roboto', sans-serif"
+        'text-sm font-bold line-clamp-2 pt-2 pl-6 text-black dark:text-white'
+      pAuthor.style =
+        "font-family: 'Roboto', sans-serif font-variant-numeric: tabular-nums;"
       // pAuthor.style.cursor = 'pointer'
       videoPlayer.appendChild(pAuthor)
 
@@ -64,6 +67,12 @@ function newVideoElement(video: { id: any; time: any }) {
           })
       }
     }
+  }
+
+  {
+    const div = document.createElement('div')
+    div.className = 'h-20 bg-white dark:bg-neutral-900'
+    videoElem.appendChild(div)
   }
 
   return videoElem

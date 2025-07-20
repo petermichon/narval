@@ -16,7 +16,7 @@ function newYoutubeEmbed(video: {
   // iframe.frameBorder = '0'
   iframe.allowFullscreen = true
   iframe.referrerPolicy = 'strict-origin-when-cross-origin'
-  iframe.className = 'w-full aspect-video'
+  iframe.className = 'w-full h-full'
 
   iframe.addEventListener('load', () => {
     console.log('iframe loaded')
