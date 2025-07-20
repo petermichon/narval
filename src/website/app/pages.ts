@@ -19,8 +19,7 @@ function goToPage(pathname: string) {
 
   {
     dmap.set('/', () => {
-      // fetch('http://localhost:3000')
-      fetch('http://141.94.215.121:3000/')
+      fetch('videos.json')
         .then((response) => response.json())
         .then((data) => {
           videos = data
