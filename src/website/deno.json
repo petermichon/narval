@@ -1,11 +1,4 @@
 {
-  "tasks": {
-    "transpile": "deno run --allow-read --allow-env --allow-write --watch transpile.ts"
-  },
-  "compilerOptions": {
-    "lib": ["dom", "esnext", "deno.ns"],
-    "strict": true
-  },
   "lint": {
     "rules": {
       "include": [],

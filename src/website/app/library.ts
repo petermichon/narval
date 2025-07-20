@@ -1,4 +1,5 @@
 import { newFeedElement } from './feed.ts'
+import { newVideoCardElement } from './video-card.ts'
 
 function newLibraryElement(): HTMLElement {
   let libElem = document.createElement('div')
@@ -22,7 +23,7 @@ function newLibraryElement(): HTMLElement {
 
     // localStorage.setItem('channels', JSON.stringify(channels))
 
-    console.log(JSON.parse(localStorage.getItem('channels')!))
+    console.log(JSON.parse(localStorage.getItem('channels') || '[]'))
   }
   {
     type Video = {
@@ -37,12 +38,34 @@ function newLibraryElement(): HTMLElement {
 
     // localStorage.setItem('videos', JSON.stringify(videos))
 
-    console.log(JSON.parse(localStorage.getItem('videos')!))
+    console.log(JSON.parse(localStorage.getItem('videos') || '[]'))
   }
 
-  const videos = JSON.parse(localStorage.getItem('videos')!)
+  const videos = JSON.parse(localStorage.getItem('videos') || '[]')
 
   libElem = newFeedElement(videos)
+
+  {
+    const input = document.createElement('input')
+    input.type = 'text'
+    input.placeholder = 'Type something and press Enter'
+    input.className =
+      'w-80 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-100 shadow-sm'
+    input.style = "font-family: 'Roboto', sans-serif"
+
+    input.addEventListener('keydown', (event: KeyboardEvent) => {
+      if (event.key === 'Enter') {
+        console.log(input.value)
+
+        const videoElem = newVideoCardElement({ id: input.value, time: '0' })
+
+        input.value = '' // Clear input after logging
+        libElem.appendChild(videoElem)
+      }
+    })
+
+    libElem.appendChild(input)
+  }
 
   return libElem
 }

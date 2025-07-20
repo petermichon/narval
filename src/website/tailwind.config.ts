@@ -1,12 +1,9 @@
-export const content = [
-  // './**/*.{html,js,ts,jsx,tsx}',
-  // './index.html',
-]
-export const theme = {
-  extend: {
-    fontFamily: {
-      // roboto: ["Roboto", "sans-serif"],
-      // roboto-variable: ["Roboto Variable", "sans-serif"],
-    },
-  },
+import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  content: ['./index.html', './index.ts', './app/**/*.{html,js,ts,jsx,tsx}'],
+  theme: {},
+  plugins: [],
 }
+
+export default config

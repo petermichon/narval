@@ -1,9 +1,10 @@
+import { DefaultMap } from '../../default-map/mod.ts'
+
 import { newFeedElement } from './feed.ts'
 import { newVideoElement } from './video.ts'
 import { newChannelElement } from './channel.ts'
 import { newLibraryElement } from './library.ts'
-
-import { DefaultMap } from '../../default-map/mod.ts'
+import { newTopBar } from './top-bar.ts'
 
 function goToPage(pathname: string) {
   let videos: { id: string; time: string }[] = []
@@ -18,8 +19,8 @@ function goToPage(pathname: string) {
 
   {
     dmap.set('/', () => {
-      // fetch('http://localhost:3000')
-      fetch('http://141.94.215.121:3000/')
+      fetch('http://localhost:3000')
+        // fetch('http://141.94.215.121:3000/')
         .then((response) => response.json())
         .then((data) => {
           videos = data
@@ -27,6 +28,8 @@ function goToPage(pathname: string) {
           // console.log(videos)
 
           document.title = 'Narval'
+
+          const topBar = newTopBar()
 
           const feedElement = newFeedElement(videos)
 
@@ -37,7 +40,13 @@ function goToPage(pathname: string) {
             goToPage('/video')
           })
 
+          topBar.addEventListener('logo-click', (event) => {
+            // history.pushState({}, '', `/`)
+            // goToPage('/')
+          })
+
           app.innerHTML = ''
+          app.appendChild(topBar)
           app.appendChild(feedElement)
         })
     })
@@ -57,12 +66,15 @@ function goToPage(pathname: string) {
 
       const videoElement = newVideoElement({ id: id, time: time })
 
-      videoElement.addEventListener('logo-click', (event) => {
+      const topBar = newTopBar()
+
+      topBar.addEventListener('logo-click', (event) => {
         history.pushState({}, '', `/`)
         goToPage('/')
       })
 
       app.innerHTML = ''
+      app.appendChild(topBar)
       app.appendChild(videoElement)
     })
 

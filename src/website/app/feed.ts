@@ -1,37 +1,7 @@
-export {}
+import { newVideoCardElement } from './video-card.ts'
 
-export function newFeedElement(videos: { id: string; time: string }[]) {
+function newFeedElement(videos: { id: string; time: string }[]) {
   const feedElem = document.createElement('div')
-
-  {
-    const div = document.createElement('div')
-    div.className = 'bg-white flex p-3'
-    feedElem.appendChild(div)
-
-    {
-      const logo = document.createElement('div')
-      logo.className = 'flex cursor-pointer'
-      logo.onclick = () => {
-        // console.log(globalThis.location.href)
-        return
-      }
-      div.appendChild(logo)
-      {
-        const img = document.createElement('img')
-        img.className = 'w-9 h-9 ml-4 mr-1'
-        img.src = './narval.png'
-        logo.appendChild(img)
-      }
-      {
-        const div2 = document.createElement('div')
-        div2.className =
-          'text-3xl text-black font-bold pr-3 font-sans hidden lg:block'
-        div2.textContent = 'narval'
-        div2.style = "font-family: 'Roboto', sans-serif"
-        logo.appendChild(div2)
-      }
-    }
-  }
 
   {
     const videoFeed = document.createElement('div')
@@ -42,104 +12,101 @@ export function newFeedElement(videos: { id: string; time: string }[]) {
     {
       // videos.forEach((video: Video) => {
       for (const video of videos) {
-        const oembedUrl = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${video.id}&format=json`
-        const thumbnailUrl = `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`
-        // const thumbnailUrl = ``;
-        // mqdefault.jpg
-        // hqdefault.jpg
-        // sddefault.jpg
-        // maxresdefault.jpg
-        // https://i.ytimg.com/vi_webp/6VgKYd0JWq4/maxresdefault.webp
+        const videoCard = newVideoCardElement(video)
+        videoFeed.appendChild(videoCard)
 
-        const singleVideo = document.createElement('div')
-        singleVideo.className =
-          'relative overflow-hidden bg-white p-0 hover:scale-100 transition-all duration-180 md:rounded-lg'
-        videoFeed.appendChild(singleVideo)
-
-        // {
-        //   const img = document.createElement("div");
-        //   img.className = "rounded-xl w-full aspect-video bg-gray-300";
-        //   // img.className = "cursor-pointer rounded-3xl object-cover aspect-[16/9]";
-        //   singleVideo.appendChild(img);
-        // }
-
-        const imgcontainer = document.createElement('div')
-        imgcontainer.className = 'rounded-md aspect-video bg-gray-50 relative'
-        singleVideo.appendChild(imgcontainer)
-
-        const textloading1 = document.createElement('div')
-        textloading1.className =
-          'h-7 m-3 bg-gray-200 rounded-lg animate-pulse z-10'
-        singleVideo.appendChild(textloading1)
-
-        const authorloading = document.createElement('div')
-        authorloading.className =
-          'h-2 m-2 w-1/4 bg-gray-200 rounded-full animate-pulse'
-        singleVideo.appendChild(authorloading)
-
-        {
-          const separator = document.createElement('div')
-          separator.className = 'h-1 bg-gray-200 sm:hidden'
-          singleVideo.appendChild(separator)
-        }
-
-        fetch(oembedUrl)
-          .then((res) => {
-            return res.json()
+        videoCard.addEventListener('video-click', (event) => {
+          const eventCopy = new CustomEvent('video-click', {
+            detail: { video: video },
           })
-          .then((data) => {
-            {
-              const img = document.createElement('img')
-              img.src = thumbnailUrl
-              img.className =
-                'sm:rounded-md relative w-full h-full aspect-video object-cover opacity-0 transition-opacity duration-500 z-1'
-              img.loading = 'lazy'
-              img.onload = () => {
-                img.classList.add('opacity-100')
-              }
-              imgcontainer.appendChild(img)
-            }
+          feedElem.dispatchEvent(eventCopy)
+        })
 
-            {
-              const img = document.createElement('img')
-              img.src = thumbnailUrl
-              img.className =
-                'absolute inset-0 w-full h-full object-cover z-0 opacity-20 blur-3xl scale-80 saturate-1000 contrast-100 brightness-100'
-              img.loading = 'lazy'
-              singleVideo.appendChild(img)
-            }
-
-            {
-              const p = document.createElement('p')
-              p.textContent = data.title
-              p.className =
-                'relative text-sm text-black line-clamp-2 items-center align-center m-2 z-1 min-h-[3rem] leading-[1.5rem]'
-              p.style = "font-family: 'Roboto', sans-serif"
-              // singleVideo.appendChild(p);
-              textloading1.replaceWith(p)
-            }
-
-            {
-              const p = document.createElement('p')
-              p.textContent = data.author_name
-              p.className =
-                'relative bottom-0 text-xs m-2 text-gray-500 line-clamp-2 z-1'
-              p.style = "font-family: 'Roboto', sans-serif"
-              p.style.cursor = 'pointer'
-              // singleVideo.appendChild(p);
-              authorloading.replaceWith(p)
-            }
-
-            singleVideo.style.cursor = 'pointer'
-
-            singleVideo.addEventListener('click', () => {
-              const event = new CustomEvent('video-click', {
-                detail: { video: video },
-              })
-
-              feedElem.dispatchEvent(event)
-            })
-          })
+        //   const oembedUrl = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${video.id}&format=json`
+        //   const thumbnailUrl = `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`
+        //   // const thumbnailUrl = ``;
+        //   // mqdefault.jpg
+        //   // hqdefault.jpg
+        //   // sddefault.jpg
+        //   // maxresdefault.jpg
+        //   // https://i.ytimg.com/vi_webp/6VgKYd0JWq4/maxresdefault.webp
+        //   const singleVideo = document.createElement('div')
+        //   singleVideo.className =
+        //     'relative overflow-hidden bg-white p-0 hover:scale-100 transition-all duration-180 md:rounded-lg'
+        //   videoFeed.appendChild(singleVideo)
+        //   // {
+        //   //   const img = document.createElement("div");
+        //   //   img.className = "rounded-xl w-full aspect-video bg-gray-300";
+        //   //   // img.className = "cursor-pointer rounded-3xl object-cover aspect-[16/9]";
+        //   //   singleVideo.appendChild(img);
+        //   // }
+        //   const imgcontainer = document.createElement('div')
+        //   imgcontainer.className = 'rounded-md aspect-video bg-gray-50 relative'
+        //   singleVideo.appendChild(imgcontainer)
+        //   const textloading1 = document.createElement('div')
+        //   textloading1.className =
+        //     'h-7 m-3 bg-gray-200 rounded-lg animate-pulse z-10'
+        //   singleVideo.appendChild(textloading1)
+        //   const authorloading = document.createElement('div')
+        //   authorloading.className =
+        //     'h-2 m-2 w-1/4 bg-gray-200 rounded-full animate-pulse'
+        //   singleVideo.appendChild(authorloading)
+        //   {
+        //     const separator = document.createElement('div')
+        //     separator.className = 'h-1 bg-gray-200 sm:hidden'
+        //     singleVideo.appendChild(separator)
+        //   }
+        //   fetch(oembedUrl)
+        //     .then((res) => {
+        //       return res.json()
+        //     })
+        //     .then((data) => {
+        //       {
+        //         const img = document.createElement('img')
+        //         img.src = thumbnailUrl
+        //         img.className =
+        //           'sm:rounded-md relative w-full h-full aspect-video object-cover opacity-0 transition-opacity duration-500 z-1'
+        //         img.loading = 'lazy'
+        //         img.onload = () => {
+        //           img.classList.add('opacity-100')
+        //         }
+        //         imgcontainer.appendChild(img)
+        //       }
+        //       {
+        //         const img = document.createElement('img')
+        //         img.src = thumbnailUrl
+        //         img.className =
+        //           'absolute inset-0 w-full h-full object-cover z-0 opacity-20 blur-3xl scale-80 saturate-1000 contrast-100 brightness-100'
+        //         img.loading = 'lazy'
+        //         singleVideo.appendChild(img)
+        //       }
+        //       {
+        //         const p = document.createElement('p')
+        //         p.textContent = data.title
+        //         p.className =
+        //           'relative text-sm text-black line-clamp-2 items-center align-center m-2 z-1 min-h-[3rem] leading-[1.5rem]'
+        //         p.style = "font-family: 'Roboto', sans-serif"
+        //         // singleVideo.appendChild(p);
+        //         textloading1.replaceWith(p)
+        //       }
+        //       {
+        //         const p = document.createElement('p')
+        //         p.textContent = data.author_name
+        //         p.className =
+        //           'relative bottom-0 text-xs m-2 text-gray-500 line-clamp-2 z-1'
+        //         p.style = "font-family: 'Roboto', sans-serif"
+        //         p.style.cursor = 'pointer'
+        //         // singleVideo.appendChild(p);
+        //         authorloading.replaceWith(p)
+        //       }
+        //       singleVideo.style.cursor = 'pointer'
+        //       singleVideo.addEventListener('click', () => {
+        //         const event = new CustomEvent('video-click', {
+        //           detail: { video: video },
+        //         })
+        //         feedElem.dispatchEvent(event)
+        //       })
+        //     })
       }
     }
 
@@ -159,3 +126,5 @@ export function newFeedElement(videos: { id: string; time: string }[]) {
 
   return feedElem
 }
+
+export { newFeedElement }

@@ -1,49 +1,9 @@
-export {}
+import { newYoutubeEmbed } from './youtube-embed.ts'
 
-export function newVideoElement(video: { id: any; time: any }) {
+function newVideoElement(video: { id: any; time: any }) {
   const videoElem = document.createElement('div')
 
   {
-    const pathname = globalThis.location.pathname
-
-    const urlparameters = new URLSearchParams(globalThis.location.search)
-    // console.log(urlparameters)
-
-    // video.id = urlparameters.get('v')!
-    // video.time = urlparameters.get('t')!
-
-    const vid = {
-      title: 'title',
-      author_name: 'author_name',
-    }
-
-    {
-      const logo = document.createElement('div')
-      logo.className = 'flex cursor-pointer'
-
-      logo.addEventListener('click', () => {
-        const event = new CustomEvent('logo-click')
-
-        videoElem.dispatchEvent(event)
-      })
-
-      videoElem.appendChild(logo)
-      {
-        const img = document.createElement('img')
-        img.className = 'w-9 h-9 ml-4 mr-1'
-        img.src = './narval.png'
-        logo.appendChild(img)
-      }
-      {
-        const div2 = document.createElement('div')
-        div2.className =
-          'text-3xl text-black font-bold pr-3 font-sans hidden lg:block'
-        div2.textContent = 'narval'
-        div2.style = "font-family: 'Roboto', sans-serif"
-        logo.appendChild(div2)
-      }
-    }
-
     const videoPlayer = document.createElement('div')
     videoPlayer.className = ''
     // videoFeed.appendChild(videoPlayer);
@@ -51,23 +11,29 @@ export function newVideoElement(video: { id: any; time: any }) {
     videoElem.appendChild(videoPlayer)
 
     {
-      const url = `https://www.youtube.com/embed/${video.id}?start=${video.time}`
-      // const url = ``
-      // ?start=90&autoplay=1&controls=0&mute=1&loop=1&playlist=${video.id}
-      const iframe = document.createElement('iframe')
-      iframe.style.margin = '0px'
-      iframe.style.padding = '0px'
-      // iframe.width = '560'
-      // iframe.height = '315'
-      iframe.src = url
-      // iframe.frameBorder = '0'
-      iframe.allowFullscreen = true
-      iframe.referrerPolicy = 'strict-origin-when-cross-origin'
-      iframe.className = 'w-full aspect-video'
-      videoPlayer.appendChild(iframe)
+      const embed = newYoutubeEmbed(video)
+      videoPlayer.appendChild(embed)
+    }
+
+    // {
+    //   const embed = newYoutubeEmbedAPI(video)
+    //   videoPlayer.appendChild(embed)
+    // }
+
+    {
+      // ;async () => {
+      //   const player = await newVideo(video)
+      //   console.log('test')
+      //   videoPlayer.appendChild(player as any)
+      // }
     }
 
     {
+      const vid = {
+        title: 'title',
+        author_name: 'author_name',
+      }
+
       const pTitle = document.createElement('p')
       pTitle.textContent = vid.title
       pTitle.className = 'text-xl font-bold text-black line-clamp-2'
@@ -100,3 +66,5 @@ export function newVideoElement(video: { id: any; time: any }) {
 
   return videoElem
 }
+
+export { newVideoElement }
