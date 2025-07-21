@@ -23,19 +23,6 @@ function newFeedElement(videos: { id: string; time: string }[]) {
         })
       }
     }
-
-    {
-      const div = document.createElement('div')
-      div.className = 'h-20 bg-white dark:bg-neutral-900'
-      feedElem.appendChild(div)
-    }
-
-    {
-      const nav = document.createElement('nav')
-      nav.className =
-        'absolute w-full p-7 fixed bottom-0 left-0 right-0 lg:hidden z-2 opacity-90 backdrop-blur-md bg-gray-100 dark:bg-neutral-900'
-      feedElem.appendChild(nav)
-    }
   }
 
   return feedElem

@@ -1,10 +1,11 @@
 import { DefaultMap } from '../../default-map/mod.ts'
 
 import { newFeedElement } from './feed.ts'
-import { newVideoElement } from './video.ts'
+import { newYoutubeEmbed } from './youtube-embed.ts'
 import { newChannelElement } from './channel.ts'
 import { newLibraryElement } from './library.ts'
 import { newTopBar } from './top-bar.ts'
+import { newVideoHeader } from './video-header.ts'
 
 function goToPage(pathname: string) {
   let videos: { id: string; time: string }[] = []
@@ -19,18 +20,21 @@ function goToPage(pathname: string) {
 
   {
     dmap.set('/', () => {
+      document.title = 'Narval'
+
       fetch('videos.json')
         .then((response) => response.json())
         .then((data) => {
           videos = data
 
           // console.log(videos)
-
-          document.title = 'Narval'
-
           const topBar = newTopBar()
-
           const feedElement = newFeedElement(videos)
+          const footer = document.createElement('div')
+          footer.className = 'h-20 bg-white dark:bg-neutral-900'
+          const bottomNavBar = document.createElement('nav')
+          bottomNavBar.className =
+            'absolute w-full p-7 fixed bottom-0 left-0 right-0 lg:hidden z-2 opacity-90 backdrop-blur-md bg-gray-100 dark:bg-neutral-900'
 
           feedElement.addEventListener('video-click', (event) => {
             // @ts-ignore: <>
@@ -47,6 +51,8 @@ function goToPage(pathname: string) {
           app.innerHTML = ''
           app.appendChild(topBar)
           app.appendChild(feedElement)
+          app.appendChild(footer)
+          app.appendChild(bottomNavBar)
         })
     })
 
@@ -62,10 +68,13 @@ function goToPage(pathname: string) {
 
       const id = urlparameters.get('v') || ''
       const time = urlparameters.get('t') || '0'
+      const video = { id: id, time: time }
 
-      const videoElement = newVideoElement({ id: id, time: time })
-
+      const videoElement = newYoutubeEmbed(video)
       const topBar = newTopBar()
+      const videoHeader = newVideoHeader(video.id)
+      const footer = document.createElement('div')
+      footer.className = 'h-20 bg-white dark:bg-neutral-900'
 
       topBar.addEventListener('logo-click', (event) => {
         history.pushState({}, '', `/`)
@@ -75,6 +84,8 @@ function goToPage(pathname: string) {
       app.innerHTML = ''
       app.appendChild(topBar)
       app.appendChild(videoElement)
+      app.appendChild(videoHeader)
+      app.appendChild(footer)
     })
 
     dmap.set('/channel', () => {
