@@ -1,3 +1,4 @@
 /src/database/node_modules
 /src/website/dist
 /src/website/node_modules
+/src/http/secret/*
