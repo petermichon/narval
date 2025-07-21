@@ -1,5 +1,8 @@
+import { serveDir } from 'https://deno.land/std@0.201.0/http/file_server.ts'
+
 function handler(req: Request) {
-  return new Response('Hello, World!')
+  // return new Response('Hello, World!')
+  return serveDir(req, { fsRoot: './dist', showDirListing: true })
 }
 
 function main() {
