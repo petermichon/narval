@@ -1,5 +1,3 @@
-import { DefaultMap } from '../../default-map/mod.ts'
-
 import { newFeedElement } from './feed.ts'
 import { newYoutubeEmbed } from './youtube-embed.ts'
 import { newChannelElement } from './channel.ts'
@@ -16,7 +14,7 @@ function goToPage(pathname: string) {
     throw new Error('app not found')
   }
 
-  const dmap = new DefaultMap<string, () => void>()
+  const dmap = new Map<string, () => void>()
 
   dmap.set('/', () => {
     document.title = 'Narval'
