@@ -6,7 +6,7 @@
   "background_color": "#ffffff",
   "display_override": ["window-controls-overlay"],
   "display": "fullscreen",
-  "orientation": "natural",
+  "orientation": "any",
   "scope": "/",
   "start_url": "/",
   "icons": [

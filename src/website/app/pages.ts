@@ -82,10 +82,9 @@ function goToPage(pathname: string) {
       } else {
         // videoElement.requestFullscreen()
         document.documentElement.requestFullscreen({ navigationUI: 'hide' })
+        // document.documentElement.requestFullscreen()
       }
     })
-
-    videoHeader.appendChild(fullscreenButton)
 
     topBar.addEventListener('logo-click', (event) => {
       history.pushState({}, '', `/`)
