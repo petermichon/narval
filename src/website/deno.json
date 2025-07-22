@@ -1,8 +1,0 @@
-{
-  "lint": {
-    "rules": {
-      "include": [],
-      "exclude": ["no-unused-vars", "no-empty", "no-explicit-any"]
-    }
-  }
-}

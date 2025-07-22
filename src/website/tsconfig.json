@@ -2,8 +2,9 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "lib": ["dom", "esnext"],
-    "moduleResolution": "Node"
+    "moduleResolution": "bundler",
+    "lib": ["DOM", "ESNext"],
+    "allowImportingTsExtensions": true
   },
   "include": ["**/*"],
   "exclude": ["node_modules", "dist"]

@@ -1,5 +1,3 @@
-// @ts-check: <>
-
 import { goToPage } from './pages.ts'
 
 // console.log(pathname)
