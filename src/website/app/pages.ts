@@ -80,8 +80,8 @@ function goToPage(pathname: string) {
       if (document.fullscreenElement) {
         document.exitFullscreen()
       } else {
-        videoElement.requestFullscreen()
-        // document.documentElement.requestFullscreen({ navigationUI: 'hide' })
+        // videoElement.requestFullscreen()
+        document.documentElement.requestFullscreen({ navigationUI: 'hide' })
       }
     })
 
