@@ -72,6 +72,20 @@ function goToPage(pathname: string) {
     const videoHeader = newVideoHeader(video.id)
     const footer = document.createElement('div')
     footer.className = 'h-20 bg-white dark:bg-neutral-900'
+    const fullscreenButton = document.createElement('button')
+    fullscreenButton.className =
+      'relative ml-5 mt-4 p-4 rounded-full bg-neutral-900 dark:bg-white'
+
+    fullscreenButton.addEventListener('click', () => {
+      if (document.fullscreenElement) {
+        document.exitFullscreen()
+      } else {
+        videoElement.requestFullscreen()
+        // document.documentElement.requestFullscreen({ navigationUI: 'hide' })
+      }
+    })
+
+    videoHeader.appendChild(fullscreenButton)
 
     topBar.addEventListener('logo-click', (event) => {
       history.pushState({}, '', `/`)
@@ -82,6 +96,7 @@ function goToPage(pathname: string) {
     app.appendChild(topBar)
     app.appendChild(videoElement)
     app.appendChild(videoHeader)
+    app.appendChild(fullscreenButton)
     app.appendChild(footer)
   })
 
