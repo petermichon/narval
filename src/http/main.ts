@@ -6,8 +6,8 @@ function handler(req: Request) {
 }
 
 function main() {
-  const certPath = './secret/localhost+2.pem'
-  const keyPath = './secret/localhost+2-key.pem'
+  const certPath = './secret/fullchain.pem'
+  const keyPath = './secret/privkey.pem'
 
   const cert = Deno.readTextFileSync(certPath)
   const key = Deno.readTextFileSync(keyPath)
