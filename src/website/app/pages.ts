@@ -4,6 +4,8 @@ import { newChannelElement } from './channel.ts'
 import { newLibraryElement } from './library.ts'
 import { newTopBar } from './top-bar.ts'
 import { newVideoHeader } from './video-header.ts'
+import { newFooter } from './footer.ts'
+import { newFullscreenButton } from './fullscreenButton.ts'
 
 function goToPage(pathname: string) {
   let videos: { id: string; time: string }[] = []
@@ -27,8 +29,7 @@ function goToPage(pathname: string) {
         // console.log(videos)
         const topBar = newTopBar()
         const feedElement = newFeedElement(videos)
-        const footer = document.createElement('div')
-        footer.className = 'h-20 bg-white dark:bg-neutral-900'
+        const footer = newFooter()
         const bottomNavBar = document.createElement('nav')
         bottomNavBar.className =
           'absolute w-full p-7 fixed bottom-0 left-0 right-0 lg:hidden z-2 opacity-90 backdrop-blur-md bg-gray-100 dark:bg-neutral-900'
@@ -70,25 +71,22 @@ function goToPage(pathname: string) {
     const videoElement = newYoutubeEmbed(video)
     const topBar = newTopBar()
     const videoHeader = newVideoHeader(video.id)
-    const footer = document.createElement('div')
-    footer.className = 'h-20 bg-white dark:bg-neutral-900'
-    const fullscreenButton = document.createElement('button')
-    fullscreenButton.className =
-      'relative ml-5 mt-4 p-4 rounded-full bg-neutral-900 dark:bg-white'
-
-    fullscreenButton.addEventListener('click', () => {
-      if (document.fullscreenElement) {
-        document.exitFullscreen()
-      } else {
-        // videoElement.requestFullscreen()
-        document.documentElement.requestFullscreen({ navigationUI: 'hide' })
-        // document.documentElement.requestFullscreen()
-      }
-    })
+    const footer = newFooter()
+    const fullscreenButton = newFullscreenButton()
 
     topBar.addEventListener('logo-click', (event) => {
       history.pushState({}, '', `/`)
       goToPage('/')
+    })
+
+    fullscreenButton.addEventListener('fullscreen-click', (event) => {
+      if (document.fullscreenElement) {
+        document.exitFullscreen()
+      } else {
+        document.documentElement.requestFullscreen({ navigationUI: 'hide' })
+        // videoElement.requestFullscreen()
+        // document.documentElement.requestFullscreen()
+      }
     })
 
     app.innerHTML = ''
