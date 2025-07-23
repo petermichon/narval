@@ -2,4 +2,4 @@
 /src/website/dist
 /src/website/node_modules
 /src/http/secret/*
-/src/http/dist
+/src/http/public/*

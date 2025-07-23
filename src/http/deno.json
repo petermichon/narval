@@ -1,6 +1,7 @@
 {
   "tasks": {
-    "dev": "deno run --allow-net --allow-read --watch index.ts"
+    "dev": "deno run --allow-net --allow-read --watch index.ts",
+    "build": "cd ../website ; npm run build ; cp -r ./dist/* ../http/public"
   },
   "lint": {
     "rules": {
