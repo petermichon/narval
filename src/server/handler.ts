@@ -18,16 +18,16 @@ enum Status {
 }
 
 enum MimeType {
-  Text = "text/plain",
+  Text = "text/plain; charset=utf-8",
   Binary = "application/octet-stream",
 
-  CSS = "text/css",
-  HTML = "text/html",
+  CSS = "text/css; charset=utf-8",
+  HTML = "text/html; charset=utf-8",
   Icon = "image/x-icon",
   PNG = "image/png",
-  SVG = "image/svg+xml",
-  JavaScript = "application/javascript",
-  WebManifest = "application/manifest+json",
+  SVG = "image/svg+xml; charset=utf-8",
+  JavaScript = "application/javascript; charset=utf-8",
+  WebManifest = "application/manifest+json; charset=utf-8",
 }
 
 let nbRequests = 0;
