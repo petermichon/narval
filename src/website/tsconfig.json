@@ -4,7 +4,9 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "lib": ["DOM", "ESNext"],
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "strict": true
   },
   "include": ["**/*"],
   "exclude": ["node_modules", "dist"]
