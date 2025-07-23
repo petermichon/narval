@@ -20,7 +20,7 @@ function newYoutubeEmbed(video: { id: string; time: string }): HTMLElement {
     iframe.className = 'w-full h-full'
 
     iframe.addEventListener('load', () => {
-      console.log('iframe loaded')
+      // console.log('iframe loaded')
     })
 
     embedContainer.appendChild(iframe)
