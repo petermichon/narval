@@ -35,9 +35,18 @@ function goToPage(pathname: string) {
           'absolute w-full p-7 fixed bottom-0 left-0 right-0 lg:hidden z-2 opacity-90 backdrop-blur-md bg-gray-100 dark:bg-neutral-900'
 
         feedElement.addEventListener('video-click', (event) => {
-          // @ts-ignore: <>
-          const video = event.detail.video
-          history.pushState({}, '', `/video?v=${video.id}&t=${video.time}`)
+          const customEvent = event as CustomEvent
+
+          const video = customEvent.detail.video
+
+          let tParam = ''
+          if (video.time > 0) {
+            tParam = `&t=${video.time}`
+          }
+
+          let url = `/video?v=${video.id}` + tParam
+
+          history.pushState({}, '', url)
           goToPage('/video')
         })
 
@@ -93,7 +102,7 @@ function goToPage(pathname: string) {
     app.appendChild(topBar)
     app.appendChild(videoElement)
     app.appendChild(videoHeader)
-    app.appendChild(fullscreenButton)
+    // app.appendChild(fullscreenButton)
     app.appendChild(footer)
   })
 
