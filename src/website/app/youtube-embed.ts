@@ -9,6 +9,10 @@ function newYoutubeEmbed(video: { id: string; time: string }): HTMLElement {
     // const url = ``
     // ?start=90&autoplay=1&controls=0&mute=1&loop=1&playlist=${video.id}
     const iframe = document.createElement('iframe')
+    iframe.setAttribute(
+      'sandbox',
+      'allow-presentation allow-same-origin allow-scripts'
+    )
     iframe.style.margin = '0px'
     iframe.style.padding = '0px'
     // iframe.width = '560'
