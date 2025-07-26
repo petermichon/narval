@@ -6,6 +6,10 @@
 
 Add support for running the server without HTTPS certificates.
 
+### Reverse proxy `dev`
+
+Add support for running the server behind a reverse proxy. One reason to do this is to access the server through the normal HTTPS port 443.
+
 ### Add logo `general`
 
 Add a better logo.
