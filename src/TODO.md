@@ -22,6 +22,14 @@ Clean up the PWA install card.
 
 Redirect the /watch URL to /video page to better match YouTube URL.
 
+### Save video time `video`
+
+Add a way to save the current video time to the URL.
+
+### Share video `video`
+
+Add a way to copy the current URL to the clipboard.
+
 ### Empty video `video`
 
 When no video ID is specified in the URL, the player doesn't load and the page is empty.
