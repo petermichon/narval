@@ -10,17 +10,21 @@ Add support for running the server without HTTPS certificates.
 
 Add support for running the server behind a reverse proxy. One reason to do this is to access the server through the normal HTTPS port 443.
 
-### Add logo `general`
+### Logo `general`
 
 Add a better logo.
 
-### Add icon `general`
+### Icon `general`
 
 Add an icon to the website.
 
 ### Clean PWA `general`
 
 Clean up the PWA install card.
+
+### Navigation `general`
+
+Add navigation to /feed and /video. On desktop, the navigation should be on the top or on the left side of the page. On mobile, the navigation should be on the bottom of the page.
 
 ### Redirect /watch `video`
 
