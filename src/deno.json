@@ -2,6 +2,6 @@
   "tasks": {
     "install": "cd website && npm ci && cd ..",
     "build": "cd website && npm run build && cd .. && cp -r website/dist/. server/public",
-    "dev": "cd server && deno run --allow-net --allow-read index.ts"
+    "serve": "cd server && deno run --allow-net --allow-read index.ts"
   }
 }
