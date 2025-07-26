@@ -2,6 +2,10 @@
 
 ## Improvements
 
+### HTTPS certificates `dev`
+
+Add support for running the server without HTTPS certificates.
+
 ### Add logo `general`
 
 Add a better logo.
