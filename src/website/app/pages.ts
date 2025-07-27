@@ -113,6 +113,18 @@ function goToPage(pathname: string) {
     app.appendChild(footer)
   })
 
+  dmap.set('/watch', () => {
+    const params = new URLSearchParams(globalThis.location.search)
+
+    let url = `/video`
+    if (params.size > 0) {
+      url += `?${params.toString()}`
+    }
+
+    history.pushState({}, '', url)
+    goToPage('/video')
+  })
+
   dmap.set('/channel', () => {
     document.title = 'Narval - Channel'
 
