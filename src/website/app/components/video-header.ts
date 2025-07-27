@@ -29,10 +29,14 @@ function newVideoHeader(id: string): HTMLElement {
           return res.json()
         })
         .then((data) => {
-          {
-            pTitle.textContent = data.title
-            pAuthor.textContent = data.author_name
-          }
+          pTitle.textContent = data.title
+          pAuthor.textContent = data.author_name
+
+          // send loaded signal
+          const event = new CustomEvent('video-loaded', {
+            detail: { video: { title: data.title } },
+          })
+          videoHeader.dispatchEvent(event)
         })
     }
   }

@@ -44,7 +44,7 @@ function goToPage(pathname: string) {
             tParam = `&t=${video.time}`
           }
 
-          let url = `/video?v=${video.id}` + tParam
+          const url = `/video?v=${video.id}` + tParam
 
           history.pushState({}, '', url)
           goToPage('/video')
@@ -69,7 +69,7 @@ function goToPage(pathname: string) {
   })
 
   dmap.set('/video', () => {
-    document.title = 'Narval - Video'
+    // document.title = 'Narval - Video'
 
     const urlparameters = new URLSearchParams(globalThis.location.search)
 
@@ -85,13 +85,14 @@ function goToPage(pathname: string) {
 
     topBar.addEventListener('logo-click', (event) => {
       history.pushState({}, '', `/`)
+      // document.title = 'Narval'
       goToPage('/')
     })
 
-    videoHeader.addEventListener('loaded', (event) => {
+    videoHeader.addEventListener('video-loaded', (event) => {
       const customEvent = event as CustomEvent
       const video = customEvent.detail.video
-      document.title = `video.title`
+      document.title = video.title
     })
 
     fullscreenButton.addEventListener('fullscreen-click', (event) => {

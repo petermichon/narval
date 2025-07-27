@@ -4,18 +4,24 @@ function newTopBar() {
     'flex p-3 bg-white text-black dark:bg-neutral-900 dark:text-white'
 
   {
-    const logo = document.createElement('div')
+    const logo = document.createElement('a')
     logo.className = 'flex cursor-pointer'
+
+    logo.href = '/'
 
     // logo.onclick = () => {
     //   // console.log(globalThis.location.href)
     //   return
     // }
 
-    logo.addEventListener('click', () => {
-      const event = new CustomEvent('logo-click')
+    logo.addEventListener('click', (e) => {
+      if (e.button === 0) {
+        e.preventDefault()
+      }
 
-      topBarElem.dispatchEvent(event)
+      const customEvent = new CustomEvent('logo-click')
+
+      topBarElem.dispatchEvent(customEvent)
     })
     topBarElem.appendChild(logo)
 

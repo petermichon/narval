@@ -22,17 +22,9 @@ Add an icon to the website.
 
 Clean up the PWA install card.
 
-### New tab `general`
-
-Make it so that the logo can be right clicked to open the website in a new tab.
-
 ### Navigation `general`
 
 Add navigation to /feed and /video. On desktop, the navigation should be on the top or on the left side of the page. On mobile, the navigation should be on the bottom of the page.
-
-### Title `video`
-
-Add the video title as the website title.
 
 ### Redirect /watch `video`
 
