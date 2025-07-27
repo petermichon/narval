@@ -1,11 +1,11 @@
-import { newFeedElement } from './feed.ts'
-import { newYoutubeEmbed } from './youtube-embed.ts'
-import { newChannelElement } from './channel.ts'
-import { newLibraryElement } from './library.ts'
-import { newTopBar } from './top-bar.ts'
-import { newVideoHeader } from './video-header.ts'
-import { newFooter } from './footer.ts'
-import { newFullscreenButton } from './fullscreenButton.ts'
+import { newFeedElement } from './components/feed.ts'
+import { newYoutubeEmbed } from './components/youtube-embed.ts'
+import { newChannelElement } from './components/channel.ts'
+import { newLibraryElement } from './components/library.ts'
+import { newTopBar } from './components/top-bar.ts'
+import { newVideoHeader } from './components/video-header.ts'
+import { newFooter } from './components/footer.ts'
+import { newFullscreenButton } from './components/fullscreenButton.ts'
 
 function goToPage(pathname: string) {
   let videos: { id: string; time: string }[] = []
@@ -86,6 +86,12 @@ function goToPage(pathname: string) {
     topBar.addEventListener('logo-click', (event) => {
       history.pushState({}, '', `/`)
       goToPage('/')
+    })
+
+    videoHeader.addEventListener('loaded', (event) => {
+      const customEvent = event as CustomEvent
+      const video = customEvent.detail.video
+      document.title = `video.title`
     })
 
     fullscreenButton.addEventListener('fullscreen-click', (event) => {

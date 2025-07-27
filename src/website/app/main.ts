@@ -1,4 +1,4 @@
-import { goToPage } from './app/pages.ts'
+import { goToPage } from './pages.ts'
 
 function main() {
   const pathname = globalThis.location.pathname
