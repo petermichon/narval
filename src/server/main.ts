@@ -7,6 +7,9 @@ function handler(req: Request): Response {
   if (url.pathname === '/feed') {
     url.pathname = '/'
   }
+  if (url.pathname === '/watch') {
+    url.pathname = '/'
+  }
 
   if (url.pathname === '/') {
     url.pathname = '/index.html'
