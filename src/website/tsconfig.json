@@ -6,7 +6,8 @@
     "lib": ["DOM", "ESNext"],
     "allowImportingTsExtensions": true,
     "noEmit": true,
-    "strict": true
+    "strict": true,
+    "erasableSyntaxOnly": true
   },
   "include": ["**/*"],
   "exclude": ["node_modules", "dist"]
