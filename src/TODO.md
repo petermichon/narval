@@ -26,6 +26,10 @@ Clean up the PWA install card.
 
 Add navigation to /feed and /video. On desktop, the navigation should be on the top or on the left side of the page. On mobile, the navigation should be on the bottom of the page.
 
+### Title `video`
+
+Add the video title as the website title.
+
 ### Redirect /watch `video`
 
 Redirect the /watch URL to /video page to better match YouTube URL.
