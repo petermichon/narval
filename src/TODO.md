@@ -26,6 +26,10 @@ Add an icon to the website.
 
 Clean up the PWA install card.
 
+### Open in new tab `feed`
+
+Add middle click interaction to open a video in a new tab.
+
 ### Navigation `general`
 
 Add navigation to /feed and /video. On desktop, the navigation should be on the top or on the left side of the page. On mobile, the navigation should be on the bottom of the page.
