@@ -78,7 +78,7 @@ function goToPage(pathname: string) {
     const time = urlparameters.get('t') || '0'
     const video = { id: id, time: time }
 
-    let url = `https://www.petermichon.fr:8443/video?v=${video.id}`
+    let url = `/video?v=${video.id}`
     if (video.time != '0') {
       url += `&t=${video.time}`
     }
