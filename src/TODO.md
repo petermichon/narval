@@ -2,13 +2,17 @@
 
 ## Improvements
 
-### HTTPS certificates `dev`
+### HTTPS certificates `server`
 
 Add support for running the server without HTTPS certificates.
 
-### Reverse proxy `dev`
+### Reverse proxy `server`
 
 Add support for running the server behind a reverse proxy. One reason to do this is to access the server through the normal HTTPS port 443.
+
+### Redirect HTTP
+
+Redirect 'http://' to 'https://'.
 
 ### Logo `general`
 
