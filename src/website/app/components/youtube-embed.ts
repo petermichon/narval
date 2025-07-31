@@ -13,6 +13,7 @@ function newYoutubeEmbed(video: { id: string; time: string }): HTMLElement {
       'sandbox',
       'allow-presentation allow-same-origin allow-scripts'
     )
+    iframe.allow = 'clipboard-write'
     iframe.style.margin = '0px'
     iframe.style.padding = '0px'
     // iframe.width = '560'

@@ -5,6 +5,7 @@ import { newLibraryElement } from './components/library.ts'
 import { newTopBar } from './components/top-bar.ts'
 import { newVideoHeader } from './components/video-header.ts'
 import { newFooter } from './components/footer.ts'
+import { newShareButton } from './components/share-button.ts'
 import { newFullscreenButton } from './components/fullscreenButton.ts'
 
 function goToPage(pathname: string) {
@@ -77,11 +78,17 @@ function goToPage(pathname: string) {
     const time = urlparameters.get('t') || '0'
     const video = { id: id, time: time }
 
+    let url = `https://www.petermichon.fr:8443/video?v=${video.id}`
+    if (video.time != '0') {
+      url += `&t=${video.time}`
+    }
+
     const videoElement = newYoutubeEmbed(video)
     const topBar = newTopBar()
     const videoHeader = newVideoHeader(video.id)
-    const footer = newFooter()
+    const shareButton = newShareButton(url)
     const fullscreenButton = newFullscreenButton()
+    const footer = newFooter()
 
     topBar.addEventListener('logo-click', (event) => {
       history.pushState({}, '', `/`)
@@ -105,11 +112,21 @@ function goToPage(pathname: string) {
       }
     })
 
+    const shareButtonWrapper = document.createElement('div')
+    shareButtonWrapper.className = 'text-white p-4 flex-1 min-w-[200px]'
+    shareButtonWrapper.appendChild(shareButton)
+
+    const wrapper = document.createElement('div')
+    wrapper.className = 'flex flex-wrap'
+    wrapper.appendChild(videoHeader)
+    wrapper.appendChild(shareButtonWrapper)
+    // wrapper.appendChild(fullscreenButton)
+
     app.innerHTML = ''
     app.appendChild(topBar)
     app.appendChild(videoElement)
-    app.appendChild(videoHeader)
-    // app.appendChild(fullscreenButton)
+    app.appendChild(wrapper)
+
     app.appendChild(footer)
   })
 

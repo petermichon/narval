@@ -34,9 +34,9 @@ Add navigation to /feed and /video. On desktop, the navigation should be on the 
 
 Add a way to save the current video time to the URL.
 
-### Share video `video`
+### Share with timestamp `video`
 
-Add a way to copy the current URL to the clipboard.
+Add a time selection to set a custom timestamp when sharing with the share button.
 
 ### Empty video `video`
 
