@@ -15,10 +15,15 @@ function newFeedElement(videos: { id: string; time: string }[]) {
         const videoCard = newVideoCardElement(video)
         videoFeed.appendChild(videoCard)
 
-        videoCard.addEventListener('video-click', (event) => {
+        videoCard.addEventListener('click', (e) => {
+          if (e.button === 0) {
+            e.preventDefault()
+          }
+
           const eventCopy = new CustomEvent('video-click', {
             detail: { video: video },
           })
+
           feedElem.dispatchEvent(eventCopy)
         })
       }

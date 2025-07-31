@@ -8,9 +8,15 @@ function newVideoCardElement(video: { id: string; time: string }): HTMLElement {
   // maxresdefault.jpg
   // https://i.ytimg.com/vi_webp/6VgKYd0JWq4/maxresdefault.webp
 
-  const videoElem = document.createElement('div')
+  const videoElem = document.createElement('a')
   videoElem.className =
     'relative overflow-hidden bg-white p-0 hover:scale-100 transition-all duration-180 md:rounded-lg bg-white text-black dark:bg-neutral-900 dark:text-white'
+
+  let url = `/video?v=${video.id}`
+  if (video.time != '0') {
+    url += `&t=${video.time}`
+  }
+  videoElem.href = url
 
   // {
   //   const img = document.createElement("div");
