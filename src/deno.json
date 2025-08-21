@@ -1,7 +1,11 @@
 {
   "tasks": {
-    "install": "cd website && npm ci && cd ..",
-    "build": "cd website && npm run build && cd .. && cp -r website/dist/. server/public",
-    "serve": "cd server && deno run --allow-net --allow-read index.ts"
+    "install": "cd website && npm ci && cd .."
+  },
+  "lint": {
+    "rules": {
+      "include": [],
+      "exclude": ["no-unused-vars", "no-empty", "no-explicit-any"]
+    }
   }
 }

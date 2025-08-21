@@ -1,4 +1,2 @@
-/src/website/dist
-/src/website/node_modules
-/src/server/secret/*
-/src/server/public/*
+/src/dist
+/src/node_modules
